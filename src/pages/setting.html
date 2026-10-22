@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <title>Settings | Plannix</title>
+    <link rel="icon" type="image/png" href="../styles/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/settings.css?v=navy-settings-1" />
+    <link rel="stylesheet" href="../styles/sidebar.css" />
+    <script src="../styles/settings.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <iframe class="sidebar-frame" src="../components/sidebar.html?page=settings" title="Main navigation"></iframe>
+      <main class="main-content">
+        <iframe class="header-frame" src="../components/header.html?title=Settings" title="Settings header"></iframe>
+        <div class="page-content settings-page-content">
+          <section class="settings-intro">
+            <p class="eyebrow">PREFERENCES</p>
+            <h1>Settings<span class="title-period">.</span></h1>
+            <p class="welcome-subtitle">Make Plannix feel right for you.</p>
+          </section>
+
+          <section class="settings-section panel" aria-labelledby="appearance-title">
+            <div class="settings-section-heading">
+              <div>
+                <h2 id="appearance-title">Appearance</h2>
+                <p>Choose how Plannix looks across your workspace.</p>
+              </div>
+            </div>
+            <fieldset class="theme-fieldset">
+              <legend>Theme</legend>
+              <div class="theme-options">
+                <label class="theme-option" data-theme-option="light">
+                  <input type="radio" name="theme" value="light" />
+                  <span class="theme-preview theme-preview-light" aria-hidden="true">
+                    <span class="preview-sidebar"><i></i><i></i><i></i></span>
+                    <span class="preview-main"><i></i><i></i><i></i><i></i><i></i></span>
+                  </span>
+                  <span class="theme-option-label">Light</span>
+                </label>
+                <label class="theme-option" data-theme-option="dark">
+                  <input type="radio" name="theme" value="dark" />
+                  <span class="theme-preview theme-preview-dark" aria-hidden="true">
+                    <span class="preview-sidebar"><i></i><i></i><i></i></span>
+                    <span class="preview-main"><i></i><i></i><i></i><i></i><i></i></span>
+                  </span>
+                  <span class="theme-option-label">Dark</span>
+                </label>
+                <label class="theme-option" data-theme-option="system">
+                  <input type="radio" name="theme" value="system" />
+                  <span class="theme-preview theme-preview-system" aria-hidden="true">
+                    <span class="preview-sidebar"><i></i><i></i><i></i></span>
+                    <span class="preview-main"><i></i><i></i><i></i><i></i><i></i></span>
+                  </span>
+                  <span class="theme-option-label">System</span>
+                </label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="settings-section panel settings-row" aria-labelledby="sorting-title">
+            <div>
+              <h2 id="sorting-title">Default task sorting</h2>
+              <p>Choose the order used on your Tasks page.</p>
+            </div>
+            <label class="visually-hidden" for="default-sorting">Default task sorting</label>
+            <select id="default-sorting" class="settings-select">
+              <option value="newest">Newest first</option>
+              <option value="due-date">Due date (soonest first)</option>
+              <option value="priority">Priority (high to low)</option>
+              <option value="title">Task name (A to Z)</option>
+            </select>
+          </section>
+
+          <section class="settings-section panel data-settings" aria-labelledby="data-title">
+            <div>
+              <h2 id="data-title">Task data</h2>
+              <p>Manage completed tasks or reset your local Plannix data.</p>
+            </div>
+            <div class="settings-actions">
+              <div class="settings-action-copy">
+                <strong>Clear completed tasks</strong>
+                <span>Remove completed tasks while keeping your active tasks.</span>
+              </div>
+              <button class="secondary-button" id="clear-completed" type="button">Clear completed</button>
+            </div>
+            <div class="settings-actions reset-action">
+              <div class="settings-action-copy">
+                <strong>Reset all application data</strong>
+                <span>Remove all saved tasks and restore default preferences.</span>
+              </div>
+              <button class="danger-button" id="reset-data" type="button">Reset data</button>
+            </div>
+          </section>
+          <footer class="page-footer">Your preferences are saved on this device. <span aria-hidden="true">✦</span></footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="settings-confirm-dialog" id="settings-confirm-dialog" aria-labelledby="settings-confirm-title" aria-describedby="settings-confirm-description">
+      <div class="settings-confirm-icon" aria-hidden="true">!</div>
+      <h2 id="settings-confirm-title">Confirm action</h2>
+      <p id="settings-confirm-description"></p>
+      <div class="settings-confirm-actions">
+        <button class="secondary-button" id="cancel-settings-action" type="button">Cancel</button>
+        <button class="danger-button" id="confirm-settings-action" type="button">Confirm</button>
+      </div>
+    </dialog>
+    <div class="toast" id="settings-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

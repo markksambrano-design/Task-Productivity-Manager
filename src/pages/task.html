@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <title>Tasks | Plannix</title>
+    <link rel="icon" type="image/png" href="../styles/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/task.css" />
+    <link rel="stylesheet" href="../styles/sidebar.css" />
+    <script src="../styles/tasks.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <iframe class="sidebar-frame" src="../components/sidebar.html?page=tasks" title="Main navigation"></iframe>
+
+      <main class="main-content">
+        <iframe class="header-frame" src="../components/header.html?title=Tasks" title="Tasks header"></iframe>
+
+        <div class="page-content task-page-content">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow">WORKSPACE</p>
+              <h1>All Tasks<span class="title-period">.</span></h1>
+              <p class="welcome-subtitle">Manage and organize all your tasks in one place.</p>
+            </div>
+            <div class="task-page-actions">
+              <button class="secondary-button task-export-button" id="export-tasks" type="button">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 15v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Export data</span>
+              </button>
+              <button class="primary-button task-open-button" id="open-task-dialog" type="button">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <span>Add Task</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="task-page-grid">
+            <article class="panel task-page-list-panel">
+              <div class="task-table-toolbar">
+                <div class="task-view-tabs" role="tablist" aria-label="Task views">
+                  <button class="task-view-tab active" id="table-view-tab" type="button" role="tab" aria-selected="true" aria-controls="task-view-content" data-view="table">Table</button>
+                  <button class="task-view-tab" id="kanban-view-tab" type="button" role="tab" aria-selected="false" aria-controls="task-view-content" data-view="kanban">My Board</button>
+                </div>
+                <span class="panel-count" id="task-count">0 tasks</span>
+              </div>
+              <div class="task-view-content" id="task-view-content" role="tabpanel" aria-labelledby="table-view-tab">
+                <div class="task-table-scroll">
+                  <table class="task-table">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="task-table-check"><span class="visually-hidden">Task</span></th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Task name</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="m8 12 2 2 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Subtasks</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 13 13 20 4 11V4h7l9 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="8" r="1" fill="currentColor"/></svg>Category</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m20 13-7 7-9-9V4h7l9 9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="8" cy="8" r="1" fill="currentColor"/></svg>Tags</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M4 21a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Assignee</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3v18M6 4h13l-2 4 2 4H6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Priority</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4m8-4v4M4 10h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Start date</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4m8-4v4M4 10h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Due date</th>
+                        <th scope="col"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Status</th>
+                        <th scope="col"><span class="visually-hidden">Actions</span></th>
+                      </tr>
+                    </thead>
+                    <tbody id="task-list" aria-live="polite"></tbody>
+                  </table>
+                </div>
+                <div class="task-kanban" id="task-kanban" hidden></div>
+              </div>
+              <nav class="task-page-pagination" id="task-page-pagination" aria-label="Task list pages" hidden>
+                <button class="secondary-button" id="task-page-previous" type="button" disabled>Previous</button>
+                <span id="task-page-indicator" aria-live="polite"></span>
+                <button class="secondary-button" id="task-page-next" type="button">Next</button>
+              </nav>
+            </article>
+          </section>
+          <footer class="page-footer">Small steps, every day. <span aria-hidden="true">✦</span></footer>
+        </div>
+      </main>
+    </div>
+    <dialog class="task-dialog task-create-dialog" id="task-dialog" aria-labelledby="task-dialog-title">
+      <form id="task-form" class="task-create-form">
+        <div class="dialog-heading">
+          <div><p class="eyebrow">TASK MANAGEMENT</p><h2 id="task-dialog-title">Create a task</h2></div>
+          <button class="icon-button" id="close-task-dialog" type="button" aria-label="Close task form">×</button>
+        </div>
+        <label for="task-title">Task name</label>
+        <input id="task-title" name="title" type="text" maxlength="120" placeholder="What needs to get done?" required />
+
+        <label for="task-description">Description <span class="optional-label">Optional</span></label>
+        <textarea id="task-description" name="description" rows="4" maxlength="2000" placeholder="Add details about this task"></textarea>
+
+        <label for="task-assignee">Assignee <span class="optional-label">Optional</span></label>
+        <input id="task-assignee" name="assignee" type="text" maxlength="80" placeholder="Who is responsible?" />
+
+        <label for="task-category">Category</label>
+        <select id="task-category" name="category">
+          <option value="">Uncategorized</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
+          <option value="Study">Study</option>
+          <option value="Projects">Projects</option>
+        </select>
+        <label for="task-tags">Tags <span class="optional-label">Optional</span></label>
+        <input id="task-tags" name="tags" type="text" maxlength="620" placeholder="e.g. urgent, research, Q4" />
+        <p class="task-field-hint">Separate tags with commas. Up to 20 tags, 30 characters each.</p>
+        <div class="task-form-row">
+          <div>
+            <label for="task-status">Status</label>
+            <select id="task-status" name="status">
+              <option value="todo">To Do</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <div>
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" name="priority">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="task-due-date">Due date <span class="optional-label">Optional</span></label>
+        <input id="task-due-date" name="dueDate" type="date" />
+        <label for="task-start-date">Start date <span class="optional-label">Optional</span></label>
+        <input id="task-start-date" name="startDate" type="date" />
+        <fieldset class="subtask-editor">
+          <legend>Subtasks &amp; checklist <span class="optional-label">Optional</span></legend>
+          <p class="subtask-editor-hint">Break this task into smaller steps.</p>
+          <div class="subtask-add-row">
+            <label class="visually-hidden" for="subtask-title">Subtask name</label>
+            <input id="subtask-title" type="text" maxlength="120" placeholder="Add a step, e.g. Design" />
+            <button class="secondary-button" id="add-subtask" type="button">Add step</button>
+          </div>
+          <ul class="subtask-editor-list" id="subtask-editor-list" aria-live="polite"></ul>
+        </fieldset>
+        <div class="dialog-actions task-form-actions">
+          <button class="secondary-button" id="cancel-task-dialog" type="button">Cancel</button>
+          <button class="primary-button task-submit" id="task-submit" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span id="task-submit-label">Add task</span>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="task-dialog confirm-delete-dialog" id="delete-confirm-dialog" aria-labelledby="delete-confirm-title" aria-describedby="delete-confirm-description">
+      <div class="confirm-delete-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4m0 4h.01M10.3 4.9 2.8 18a1.5 1.5 0 0 0 1.3 2.2h15.8a1.5 1.5 0 0 0 1.3-2.2L13.7 4.9a1.95 1.95 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h2 id="delete-confirm-title">Delete this task?</h2>
+      <p id="delete-confirm-description">This action can't be undone.</p>
+      <strong class="confirm-delete-task-name" id="delete-confirm-task-name"></strong>
+      <form method="dialog" class="dialog-actions confirm-delete-actions">
+        <button class="secondary-button" type="submit" value="cancel">Cancel</button>
+        <button class="primary-button danger-button" type="submit" value="delete">Delete task</button>
+      </form>
+    </dialog>
+    <dialog class="task-dialog task-details-dialog" id="task-details-dialog" aria-labelledby="details-title">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">TASK DETAILS</p><h2 id="details-title"></h2></div>
+        <button class="icon-button" id="close-details-dialog" type="button" aria-label="Close task details">×</button>
+      </div>
+      <p class="details-description" id="details-description"></p>
+      <section class="details-subtasks" aria-labelledby="details-subtasks-title">
+        <div class="details-subtasks-heading">
+          <h3 id="details-subtasks-title">Subtasks &amp; checklist</h3>
+          <span id="details-subtask-progress"></span>
+        </div>
+        <div class="details-subtask-list" id="details-subtask-list"></div>
+      </section>
+      <dl class="task-metadata">
+        <div><dt>Status</dt><dd><span class="task-status-badge" id="details-status"></span></dd></div>
+        <div><dt>Priority</dt><dd><span class="priority-badge" id="details-priority"></span></dd></div>
+        <div><dt>Category</dt><dd id="details-category"></dd></div>
+        <div class="task-details-tags"><dt>Tags</dt><dd id="details-tags"></dd></div>
+        <div><dt>Assignee</dt><dd id="details-assignee"></dd></div>
+        <div><dt>Start date</dt><dd id="details-start-date"></dd></div>
+        <div><dt>Due date</dt><dd id="details-due-date"></dd></div>
+        <div><dt>Created</dt><dd id="details-created-date"></dd></div>
+      </dl>
+      <div class="dialog-actions">
+        <button class="secondary-button" id="close-details-action" type="button">Close</button>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

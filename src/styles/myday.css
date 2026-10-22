@@ -1,0 +1,165 @@
+.myday-page-content { max-width: 1260px; padding: 32px clamp(24px, 4vw, 56px) 22px; }
+.myday-page-content .welcome-row { align-items: center; margin-bottom: 22px; }
+.myday-page-content h1 { font-size: clamp(32px, 3vw, 40px); }
+.myday-page-content .welcome-subtitle { font-size: 13px; }
+.myday-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+.myday-stat-card { display: flex; min-height: 94px; align-items: center; gap: 13px; padding: 16px 18px; border: 1px solid #ededef; border-radius: 12px; background: var(--surface); box-shadow: 0 3px 12px #25203c05; }
+.myday-stat-icon { display: grid; width: 36px; height: 36px; flex: 0 0 auto; place-items: center; border-radius: 10px; font-size: 15px; font-weight: 700; }
+.due-icon { background: #eaf4ff; color: #4a91da; }
+.overdue-icon { background: #fff0ed; color: #d26558; }
+.done-icon { background: #e8f8f1; color: #40a67c; }
+.myday-stat-card > div { display: grid; gap: 5px; }
+.myday-stat-label { color: #85869b; font-size: 10px; font-weight: 600; }
+.myday-stat-card strong { color: #303147; font: 700 23px "Manrope", sans-serif; }
+.daily-progress-panel { padding: 19px 21px 17px; margin-top: 15px; }
+.daily-progress-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.daily-progress-heading h2, .myday-panel-heading h2 { margin: 0 0 4px; color: #323349; font: 700 13px "Manrope", sans-serif; }
+.daily-progress-heading p, .myday-panel-heading p { margin: 0; color: #9899a9; font-size: 10px; }
+.daily-progress-heading > strong { color: var(--purple-dark); font: 700 20px "Manrope", sans-serif; }
+.daily-progress-track { height: 8px; overflow: hidden; margin-top: 15px; border-radius: 99px; background: #f0eff5; }
+.daily-progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg,#8068ee,#a191f7); transition: width .25s ease; }
+.myday-task-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 15px; margin-top: 16px; }
+.myday-task-panel { display: flex; height: 500px; min-height: 0; flex-direction: column; padding: 18px 19px; overflow: hidden; }
+.myday-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.myday-count-badge { display: grid; min-width: 25px; height: 25px; padding: 0 7px; place-items: center; border-radius: 8px; background: #f0edff; color: #7157d5; font-size: 10px; font-weight: 700; }
+.myday-count-badge.overdue-badge { background: #fff0ed; color: #c7594f; }
+.myday-task-list { display: flex; min-height: 0; flex: 1; flex-direction: column; margin-top: 13px; }
+.myday-task-row { display: flex; min-height: 0; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px solid #f0eff4; }
+.myday-pagination { display: flex; min-height: 38px; flex: 0 0 auto; align-items: center; justify-content: center; gap: 10px; margin-top: 8px; }
+.myday-pagination[hidden] { display: none; }
+.myday-pagination .secondary-button { height: 30px; padding: 0 10px; font-size: 9px; }
+.myday-pagination button:disabled { cursor: not-allowed; opacity: .5; }
+.myday-pagination > span { color: #85869b; font-size: 9px; }
+.myday-task-details { display: grid; min-width: 0; gap: 7px; }
+.myday-task-title { overflow: hidden; color: #44455b; font-size: 11px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.myday-task-metadata { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; color: #9293a3; font-size: 9px; }
+.myday-task-metadata .priority-badge { font-size: 8px; }
+.myday-deadline { color: #818295; }
+.myday-deadline.overdue-deadline { color: #c7594f; font-weight: 600; }
+.myday-status { display: inline-flex; padding: 3px 7px; border-radius: 99px; background: #f0edff; color: #7157d5; font-size: 8px; font-weight: 600; }
+.myday-status.status-in-progress { background: #fff5e7; color: #bb8128; }
+.myday-status.status-completed { background: #e8f8f1; color: #34936e; }
+.myday-task-actions { flex: 0 0 auto; }
+.myday-complete-button { min-height: 31px; padding: 0 10px; border: 1px solid #ded9f8; border-radius: 7px; background: #f7f5ff; color: #6852ce; font-size: 9px; font-weight: 700; }
+.myday-complete-button:hover { border-color: #b8acef; background: #efebff; }
+.myday-done-label { display: inline-flex; align-items: center; gap: 5px; color: #34936e; font-size: 9px; font-weight: 700; }
+.myday-done-label::before { content: "✓"; }
+.myday-task-row.is-completed .myday-task-title { color: #9091a1; text-decoration: line-through; }
+.myday-empty-state { display: flex; min-height: 154px; flex: 1; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.myday-empty-icon { display: grid; width: 33px; height: 33px; margin-bottom: 9px; place-items: center; border-radius: 10px; background: #f0edff; color: #8068e8; font-size: 14px; font-weight: 700; }
+.myday-empty-state strong { color: #55566b; font-size: 10px; }
+.myday-empty-state > span:last-child { margin-top: 4px; color: #a0a0af; font-size: 9px; }
+.myday-page-content .page-footer { padding-top: 22px; }
+
+:root[data-theme="dark"] .myday-stat-card,
+:root[data-theme="dark"] .daily-progress-panel,
+:root[data-theme="dark"] .myday-task-panel { border-color: #353448; background: var(--surface); }
+:root[data-theme="dark"] .myday-stat-label,
+:root[data-theme="dark"] .daily-progress-heading p,
+:root[data-theme="dark"] .myday-panel-heading p,
+:root[data-theme="dark"] .myday-task-metadata,
+:root[data-theme="dark"] .myday-deadline,
+:root[data-theme="dark"] .myday-page-content .welcome-subtitle { color: #aaa9bc; }
+:root[data-theme="dark"] .myday-stat-card strong,
+:root[data-theme="dark"] .daily-progress-heading h2,
+:root[data-theme="dark"] .myday-panel-heading h2 { color: #e9e8f2; }
+:root[data-theme="dark"] .daily-progress-track { background: #38374a; }
+:root[data-theme="dark"] .myday-task-row { border-color: #3b3a50; }
+:root[data-theme="dark"] .myday-pagination > span { color: #aaa9bc; }
+:root[data-theme="dark"] .myday-task-title { color: #e1dfec; }
+:root[data-theme="dark"] .myday-task-row.is-completed .myday-task-title { color: #9695a9; }
+:root[data-theme="dark"] .myday-deadline.overdue-deadline { color: #ff9e95; }
+:root[data-theme="dark"] .myday-status { background: #353149; color: #c1b6ff; }
+:root[data-theme="dark"] .myday-status.status-in-progress { background: #463a2b; color: #f5d18f; }
+:root[data-theme="dark"] .myday-status.status-completed { background: #283f37; color: #a8e3c3; }
+:root[data-theme="dark"] .myday-complete-button { border-color: #4a426e; background: #353149; color: #c1b6ff; }
+:root[data-theme="dark"] .myday-complete-button:hover { border-color: #7465b2; background: #3d375b; }
+:root[data-theme="dark"] .myday-done-label { color: #8fd5ae; }
+:root[data-theme="dark"] .myday-empty-icon { background: #353149; color: #b7aaff; }
+:root[data-theme="dark"] .myday-empty-state strong { color: #dfdeeb; }
+:root[data-theme="dark"] .myday-empty-state > span:last-child { color: #aaa9bc; }
+
+@media (max-width: 900px) {
+  .myday-task-grid { gap: 11px; }
+  .myday-task-panel { padding: 16px; }
+}
+
+@media (max-width: 700px) {
+  .myday-page-content { padding: 28px 14px 22px; }
+  .myday-stats { gap: 9px; }
+  .myday-stat-card { gap: 9px; padding: 12px; }
+  .myday-task-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .myday-page-content .welcome-row { align-items: flex-start; gap: 10px; }
+  .myday-page-content h1 { font-size: 28px; }
+  .myday-page-content .welcome-subtitle { max-width: 220px; font-size: 11px; }
+  .myday-page-content .theme-toggle { min-height: 32px; padding: 0 8px; font-size: 9px; }
+  .myday-stats { grid-template-columns: 1fr; }
+  .myday-stat-card { min-height: 70px; padding: 11px 14px; }
+  .myday-stat-icon { width: 31px; height: 31px; }
+  .daily-progress-panel { padding: 16px; }
+  .myday-task-panel { padding: 15px; }
+  .myday-complete-button { padding: 0 8px; }
+}
+
+:root[data-theme="dark"] .myday-page-content .myday-stat-card,
+:root[data-theme="dark"] .myday-page-content .daily-progress-panel,
+:root[data-theme="dark"] .myday-page-content .myday-task-panel {
+  border-color: #203c78;
+  background: radial-gradient(ellipse at 50% 0, #10265a 0, #0b1736 48%, #071127 100%);
+  box-shadow: 0 12px 30px #02081730, inset 0 1px #ffffff0c;
+}
+:root[data-theme="dark"] .myday-page-content .myday-stat-icon { box-shadow: inset 0 1px #ffffff20, 0 4px 12px #02081730; }
+:root[data-theme="dark"] .myday-page-content .due-icon { background: linear-gradient(145deg, #163e85, #0b1f4b); color: #64b5ff; }
+:root[data-theme="dark"] .myday-page-content .overdue-icon { background: linear-gradient(145deg, #702d53, #3d1c3d); color: #ff9eaf; }
+:root[data-theme="dark"] .myday-page-content .done-icon { background: linear-gradient(145deg, #11664d, #0b3c3b); color: #66e0b3; }
+:root[data-theme="dark"] .myday-page-content .myday-stat-label,
+:root[data-theme="dark"] .myday-page-content .daily-progress-heading p,
+:root[data-theme="dark"] .myday-page-content .myday-panel-heading p,
+:root[data-theme="dark"] .myday-page-content .myday-task-metadata,
+:root[data-theme="dark"] .myday-page-content .myday-deadline,
+:root[data-theme="dark"] .myday-page-content .welcome-subtitle { color: #a9c4f5; }
+:root[data-theme="dark"] .myday-page-content .myday-stat-card strong,
+:root[data-theme="dark"] .myday-page-content .daily-progress-heading h2,
+:root[data-theme="dark"] .myday-page-content .myday-panel-heading h2 { color: #f1f5ff; }
+:root[data-theme="dark"] .myday-page-content .daily-progress-heading > strong { color: #91bfff; }
+:root[data-theme="dark"] .myday-page-content .daily-progress-track { background: #263a61; }
+:root[data-theme="dark"] .myday-page-content .daily-progress-fill { background: linear-gradient(90deg, #1687df, #66b5ff); box-shadow: 0 0 14px #248cff5c; }
+:root[data-theme="dark"] .myday-page-content .myday-count-badge {
+  border: 1px solid #2863c9;
+  background: linear-gradient(145deg, #173d86, #0e2456);
+  color: #f2f7ff;
+  box-shadow: 0 0 18px #2563eb2a;
+}
+:root[data-theme="dark"] .myday-page-content .myday-count-badge.overdue-badge {
+  border-color: #a53a68;
+  background: linear-gradient(145deg, #78294f, #491c3e);
+  color: #ffe6ef;
+  box-shadow: 0 0 16px #e4487924;
+}
+:root[data-theme="dark"] .myday-page-content .myday-task-row { border-color: #263b61; }
+:root[data-theme="dark"] .myday-page-content .myday-task-title { color: #eaf2ff; }
+:root[data-theme="dark"] .myday-page-content .myday-task-row.is-completed .myday-task-title { color: #8192b1; }
+:root[data-theme="dark"] .myday-page-content .myday-deadline.overdue-deadline { color: #ff9e95; }
+:root[data-theme="dark"] .myday-page-content .myday-status { background: #153764; color: #9dcaff; }
+:root[data-theme="dark"] .myday-page-content .myday-status.status-in-progress { background: #59451d; color: #ffd37e; }
+:root[data-theme="dark"] .myday-page-content .myday-status.status-completed { background: #124c44; color: #8fe5c0; }
+:root[data-theme="dark"] .myday-page-content .myday-complete-button {
+  border-color: #3479c5;
+  background: linear-gradient(145deg, #153e76, #102849);
+  color: #b7d9ff;
+}
+:root[data-theme="dark"] .myday-page-content .myday-complete-button:hover { border-color: #69b7ff; background: linear-gradient(145deg, #1b5797, #143761); }
+:root[data-theme="dark"] .myday-page-content .myday-done-label { color: #8fe5c0; }
+:root[data-theme="dark"] .myday-page-content .myday-empty-icon { background: linear-gradient(145deg, #163e85, #0b1f4b); color: #8dcaff; }
+:root[data-theme="dark"] .myday-page-content .myday-empty-state strong { color: #eaf2ff; }
+:root[data-theme="dark"] .myday-page-content .myday-empty-state > span:last-child,
+:root[data-theme="dark"] .myday-page-content .myday-pagination > span { color: #a9c4f5; }
+:root[data-theme="dark"] .myday-page-content .myday-stat-card,
+:root[data-theme="dark"] .myday-page-content .daily-progress-panel,
+:root[data-theme="dark"] .myday-page-content .myday-task-panel {
+  border-color: #203c78;
+  background: radial-gradient(ellipse at 50% 0, #10265a 0, #0b1736 48%, #071127 100%);
+}

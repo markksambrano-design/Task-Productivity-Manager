@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <title>My Day | Plannix</title>
+    <link rel="icon" type="image/png" href="../styles/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+    <link rel="stylesheet" href="../styles/myday.css?v=navy-myday-1" />
+    <link rel="stylesheet" href="../styles/sidebar.css" />
+    <script src="../styles/myday.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <iframe class="sidebar-frame" src="../components/sidebar.html?page=myday" title="Main navigation"></iframe>
+      <main class="main-content">
+        <iframe class="header-frame" src="../components/header.html?title=My%20Day" title="My Day header"></iframe>
+        <div class="page-content myday-page-content">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow">YOUR DAILY PLAN</p>
+              <h1>My Day<span class="title-period">.</span></h1>
+              <p class="welcome-subtitle" id="myday-date"></p>
+            </div>
+          </section>
+
+          <section class="myday-stats" aria-label="Today's task overview">
+            <article class="myday-stat-card">
+              <span class="myday-stat-icon due-icon" aria-hidden="true">✓</span>
+              <div><span class="myday-stat-label">Due today</span><strong id="due-today-count">0</strong></div>
+            </article>
+            <article class="myday-stat-card">
+              <span class="myday-stat-icon overdue-icon" aria-hidden="true">!</span>
+              <div><span class="myday-stat-label">Overdue</span><strong id="overdue-count">0</strong></div>
+            </article>
+            <article class="myday-stat-card">
+              <span class="myday-stat-icon done-icon" aria-hidden="true">✦</span>
+              <div><span class="myday-stat-label">Completed today</span><strong id="completed-today-count">0</strong></div>
+            </article>
+          </section>
+
+          <section class="panel daily-progress-panel" aria-labelledby="daily-progress-title">
+            <div class="daily-progress-heading">
+              <div><h2 id="daily-progress-title">Daily progress</h2><p id="daily-progress-caption">No tasks due today</p></div>
+              <strong id="daily-progress-rate">0%</strong>
+            </div>
+            <div class="daily-progress-track" id="daily-progress-track" role="progressbar" aria-label="Today's task completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="daily-progress-fill" id="daily-progress-fill"></div>
+            </div>
+          </section>
+
+          <section class="myday-task-grid" aria-label="Tasks for today">
+            <article class="panel myday-task-panel">
+              <div class="myday-panel-heading">
+                <div><h2>Today's tasks</h2><p>Tasks scheduled to start today</p></div>
+                <span class="myday-count-badge" id="started-today-badge">0</span>
+              </div>
+              <div class="myday-task-list" id="started-today-list" aria-live="polite"></div>
+              <nav class="myday-pagination" id="started-today-pagination" aria-label="Today's tasks pages" hidden>
+                <button class="secondary-button" id="started-today-previous" type="button" disabled>Previous</button>
+                <span id="started-today-page" aria-live="polite"></span>
+                <button class="secondary-button" id="started-today-next" type="button">Next</button>
+              </nav>
+            </article>
+            <article class="panel myday-task-panel">
+              <div class="myday-panel-heading">
+                <div><h2>Due today</h2><p>Tasks that need to be finished today</p></div>
+                <span class="myday-count-badge" id="due-today-badge">0</span>
+              </div>
+              <div class="myday-task-list" id="due-today-list" aria-live="polite"></div>
+              <nav class="myday-pagination" id="due-today-pagination" aria-label="Due today task pages" hidden>
+                <button class="secondary-button" id="due-today-previous" type="button" disabled>Previous</button>
+                <span id="due-today-page" aria-live="polite"></span>
+                <button class="secondary-button" id="due-today-next" type="button">Next</button>
+              </nav>
+            </article>
+            <article class="panel myday-task-panel overdue-task-panel">
+              <div class="myday-panel-heading">
+                <div><h2>Overdue tasks</h2><p>Past due and not completed yet</p></div>
+                <span class="myday-count-badge overdue-badge" id="overdue-badge">0</span>
+              </div>
+              <div class="myday-task-list" id="overdue-list" aria-live="polite"></div>
+              <nav class="myday-pagination" id="overdue-pagination" aria-label="Overdue task pages" hidden>
+                <button class="secondary-button" id="overdue-previous" type="button" disabled>Previous</button>
+                <span id="overdue-page" aria-live="polite"></span>
+                <button class="secondary-button" id="overdue-next" type="button">Next</button>
+              </nav>
+            </article>
+          </section>
+          <footer class="page-footer">One day at a time. <span aria-hidden="true">✦</span></footer>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="myday-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

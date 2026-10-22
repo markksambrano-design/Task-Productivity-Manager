@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <title>Calendar | Plannix</title>
+    <link rel="icon" type="image/png" href="../styles/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../styles/dashboard.css?v=navy-pages-1" />
+    <link rel="stylesheet" href="../styles/calendar.css?v=navy-pages-1" />
+    <link rel="stylesheet" href="../styles/sidebar.css" />
+    <script src="../styles/calendar.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <iframe class="sidebar-frame" src="../components/sidebar.html?page=calendar" title="Main navigation"></iframe>
+      <main class="main-content">
+        <iframe class="header-frame" src="../components/header.html?title=Calendar" title="Calendar header"></iframe>
+        <div class="page-content calendar-page-content">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow">WORKSPACE</p>
+              <h1>Calendar<span class="title-period">.</span></h1>
+              <p class="welcome-subtitle">See when your tasks are due.</p>
+            </div>
+          </section>
+
+          <section class="panel calendar-panel" aria-label="Monthly task calendar">
+            <div class="calendar-toolbar">
+              <div class="calendar-month-heading">
+                <h2 id="calendar-month-title" aria-live="polite"></h2>
+                <p id="calendar-month-summary"></p>
+              </div>
+              <div class="calendar-navigation" aria-label="Calendar navigation">
+                <button class="calendar-today-button" id="calendar-today" type="button">Today</button>
+                <button class="calendar-nav-button" id="calendar-previous" type="button" aria-label="Previous month">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button class="calendar-nav-button" id="calendar-next" type="button" aria-label="Next month">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="calendar-weekdays" id="calendar-weekdays" aria-hidden="true"></div>
+            <div class="calendar-grid" id="calendar-grid" aria-labelledby="calendar-month-title" aria-live="polite"></div>
+            <div class="calendar-legend" aria-label="Calendar legend">
+              <span><i class="calendar-legend-dot due" aria-hidden="true"></i>Upcoming</span>
+              <span><i class="calendar-legend-dot overdue" aria-hidden="true"></i>Overdue</span>
+              <span><i class="calendar-legend-dot completed" aria-hidden="true"></i>Completed</span>
+            </div>
+          </section>
+          <footer class="page-footer">Small steps, every day. <span aria-hidden="true">✦</span></footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="task-dialog task-details-dialog" id="calendar-task-details" aria-labelledby="calendar-details-title">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">TASK DETAILS</p><h2 id="calendar-details-title"></h2></div>
+        <button class="icon-button" id="calendar-details-close" type="button" aria-label="Close task details">×</button>
+      </div>
+      <p class="details-description" id="calendar-details-description"></p>
+      <dl class="task-metadata">
+        <div><dt>Status</dt><dd><span class="task-status-badge" id="calendar-details-status"></span></dd></div>
+        <div><dt>Priority</dt><dd><span class="priority-badge" id="calendar-details-priority"></span></dd></div>
+        <div><dt>Assignee</dt><dd id="calendar-details-assignee"></dd></div>
+        <div><dt>Start date</dt><dd id="calendar-details-start-date"></dd></div>
+        <div><dt>Due date</dt><dd id="calendar-details-due-date"></dd></div>
+        <div><dt>Created</dt><dd id="calendar-details-created-date"></dd></div>
+      </dl>
+      <div class="dialog-actions">
+        <button class="secondary-button" id="calendar-details-done" type="button">Close</button>
+      </div>
+    </dialog>
+    <div class="toast" id="calendar-toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
